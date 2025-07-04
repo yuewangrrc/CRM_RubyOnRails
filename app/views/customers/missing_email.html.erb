@@ -1,0 +1,99 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <h1 class="title is-2">
+          <i class="fas fa-envelope-open-text mr-3"></i>
+          Customers Missing Email
+        </h1>
+        <p class="subtitle">
+          Customers who need email addresses added
+        </p>
+        
+        <nav class="level mb-4 navigation-bar">
+          <div class="level-left">
+            <div class="level-item">
+              <div class="field is-grouped">
+                <%= link_to root_path, class: "button is-info" do %>
+                  <span class="icon">
+                    <i class="fas fa-list"></i>
+                  </span>
+                  <span>All Customers</span>
+                <% end %>
+                <%= link_to customers_alphabetized_path, class: "button is-primary" do %>
+                  <span class="icon">
+                    <i class="fas fa-sort-alpha-down"></i>
+                  </span>
+                  <span>Alphabetical</span>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </div>
+    
+    <div class="columns">
+      <div class="column is-8">
+        <% if @customers.any? %>
+          <div class="notification is-warning is-light mb-4">
+            <p>
+              <i class="fas fa-exclamation-triangle mr-2"></i>
+              Found <strong><%= pluralize(@customers.count, 'customer') %></strong> missing email addresses
+            </p>
+          </div>
+          
+          <% @customers.each do |customer| %>
+            <%= render 'customer', customer: customer %>
+          <% end %>
+        <% else %>
+          <div class="notification is-success">
+            <p class="title is-5">
+              <i class="fas fa-check-circle mr-2"></i>
+              Great! All customers have email addresses
+            </p>
+            <p>Every customer in your database has a valid email address.</p>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="column is-4">
+        <div class="box stats-box">
+          <h2 class="title is-4">
+            <i class="fas fa-envelope mr-2"></i>
+            Email Status
+          </h2>
+          <div class="content">
+            <% total_customers = Customer.count %>
+            <% customers_with_email = Customer.where.not(email_address: [nil, '']).count %>
+            <% customers_without_email = total_customers - customers_with_email %>
+            
+            <p>
+              <span class="tag is-primary is-medium">
+                <%= total_customers %> Total Customers
+              </span>
+            </p>
+            <p>
+              <span class="tag is-success is-medium">
+                <%= customers_with_email %> With Email
+              </span>
+            </p>
+            <p>
+              <span class="tag is-warning is-medium">
+                <%= customers_without_email %> Missing Email
+              </span>
+            </p>
+            
+            <% if customers_without_email > 0 %>
+              <hr>
+              <div class="notification is-light is-small">
+                <p class="has-text-weight-semibold">Action needed:</p>
+                <p>Contact these customers to collect their email addresses for better communication.</p>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

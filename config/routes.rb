@@ -3,7 +3,16 @@ Rails.application.routes.draw do
   ActiveAdmin.routes(self)
   
   # Customer routes
-  resources :customers
+  resources :customers do
+    collection do
+      get :alphabetized
+      get :missing_email
+    end
+  end
+  
+  # Custom routes as specified
+  get '/customers/alphabetized', to: 'customers#alphabetized', as: 'customers_alphabetized'
+  get '/customers/missing_email', to: 'customers#missing_email', as: 'customers_missing_email'
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

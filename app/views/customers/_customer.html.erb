@@ -1,8 +1,8 @@
-<div class="card mb-4">
+<div class="card mb-4 customer-card">
   <div class="card-content">
     <div class="media">
       <div class="media-left">
-        <figure class="image is-64x64">
+        <figure class="image is-64x64 customer-avatar">
           <% if customer.image.attached? %>
             <%= image_tag customer.image, class: "is-rounded", alt: "#{customer.full_name} profile picture" %>
           <% else %>
@@ -56,7 +56,7 @@
           </div>
           
           <% if customer.notes.present? %>
-            <div class="notification is-light mt-3">
+            <div class="customer-notes mt-3">
               <p class="subtitle is-6 mb-2">
                 <i class="fas fa-sticky-note mr-2"></i>
                 Notes
@@ -67,7 +67,7 @@
         </div>
       </div>
       
-      <div class="media-right">
+      <div class="media-right action-buttons">
         <div class="dropdown is-hoverable is-right">
           <div class="dropdown-trigger">
             <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu">

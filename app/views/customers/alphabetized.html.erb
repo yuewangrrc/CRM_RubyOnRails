@@ -3,22 +3,22 @@
     <div class="columns">
       <div class="column">
         <h1 class="title is-2">
-          <i class="fas fa-users mr-3"></i>
-          Customer Directory
+          <i class="fas fa-sort-alpha-down mr-3"></i>
+          Customers - Alphabetical Order
         </h1>
         <p class="subtitle">
-          Manage your customer relationships with style
+          All customers sorted by name
         </p>
         
         <nav class="level mb-4 navigation-bar">
           <div class="level-left">
             <div class="level-item">
               <div class="field is-grouped">
-                <%= link_to customers_alphabetized_path, class: "button is-primary" do %>
+                <%= link_to root_path, class: "button is-info" do %>
                   <span class="icon">
-                    <i class="fas fa-sort-alpha-down"></i>
+                    <i class="fas fa-list"></i>
                   </span>
-                  <span>Alphabetical</span>
+                  <span>All Customers</span>
                 <% end %>
                 <%= link_to customers_missing_email_path, class: "button is-warning" do %>
                   <span class="icon">
@@ -39,7 +39,7 @@
           <div class="notification is-info is-light mb-4">
             <p>
               <i class="fas fa-info-circle mr-2"></i>
-              Found <strong><%= pluralize(@customers.count, 'customer') %></strong>
+              Found <strong><%= pluralize(@customers.count, 'customer') %></strong> sorted alphabetically
             </p>
           </div>
           

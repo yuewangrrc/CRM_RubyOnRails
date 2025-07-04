@@ -1,0 +1,349 @@
+/* Modern Customer CRM Styles with Unique Design */
+
+/* 主体背景渐变 */
+body {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  position: relative;
+}
+
+/* 浮动粒子背景效果 */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+    radial-gradient(circle at 40% 40%, rgba(120, 198, 255, 0.3) 0%, transparent 50%);
+  z-index: -1;
+  animation: floatingBubbles 20s ease-in-out infinite;
+}
+
+@keyframes floatingBubbles {
+  0%, 100% { opacity: 0.8; transform: translateY(0px) rotate(0deg); }
+  50% { opacity: 1; transform: translateY(-20px) rotate(180deg); }
+}
+
+/* 客户卡片的独特设计 */
+.customer-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+/* 卡片悬浮效果 */
+.customer-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.customer-card:hover::before {
+  left: 100%;
+}
+
+.customer-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 
+    0 20px 40px rgba(0, 0, 0, 0.15),
+    0 0 0 1px rgba(255, 255, 255, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+/* 独特的头像设计 */
+.customer-avatar {
+  position: relative;
+  overflow: visible;
+}
+
+.customer-avatar::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  right: -3px;
+  bottom: -3px;
+  background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
+  border-radius: 50%;
+  z-index: -1;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  animation: rotateGradient 4s linear infinite;
+}
+
+.customer-card:hover .customer-avatar::after {
+  opacity: 1;
+}
+
+@keyframes rotateGradient {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.customer-avatar img,
+.customer-avatar > div {
+  border: 3px solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 创新的标签设计 */
+.tags.has-addons .tag {
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.tags.has-addons .tag:first-child {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  border-radius: 15px 0 0 15px;
+}
+
+.tags.has-addons .tag:last-child {
+  border-radius: 0 15px 15px 0;
+  background: rgba(255, 255, 255, 0.9);
+  color: #363636;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.tags.has-addons .tag.is-success:last-child {
+  background: linear-gradient(135deg, #48c78e 0%, #06d6a0 100%);
+  color: white;
+}
+
+.tags.has-addons .tag.is-warning:last-child {
+  background: linear-gradient(135deg, #ffe08a 0%, #ff6b6b 100%);
+  color: white;
+}
+
+.tags.has-addons .tag.is-info:last-child {
+  background: linear-gradient(135deg, #74c0fc 0%, #4dabf7 100%);
+  color: white;
+}
+
+/* 动态导航栏 */
+.navigation-bar {
+  background: rgba(255, 255, 255, 0.15);
+  backdrop-filter: blur(20px);
+  border-radius: 25px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* 独特的按钮设计 */
+.button {
+  border-radius: 50px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  border: 2px solid transparent;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  position: relative;
+  overflow: hidden;
+}
+
+.button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.button:hover::before {
+  left: 100%;
+}
+
+.button.is-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.button.is-info {
+  background: linear-gradient(135deg, #74c0fc 0%, #4dabf7 100%);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.button.is-warning {
+  background: linear-gradient(135deg, #ffe08a 0%, #ff6b6b 100%);
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* 毛玻璃效果的容器 */
+.section {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 30px;
+  margin: 2rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 独特的标题设计 */
+.title {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-weight: 800;
+}
+
+/* 创新的通知设计 */
+.notification {
+  border-radius: 20px;
+  border: none;
+  backdrop-filter: blur(10px);
+  position: relative;
+  overflow: hidden;
+}
+
+.notification.is-info {
+  background: linear-gradient(135deg, rgba(116, 192, 252, 0.2) 0%, rgba(77, 171, 247, 0.2) 100%);
+  border: 1px solid rgba(116, 192, 252, 0.3);
+}
+
+.notification.is-warning {
+  background: linear-gradient(135deg, rgba(255, 224, 138, 0.2) 0%, rgba(255, 107, 107, 0.2) 100%);
+  border: 1px solid rgba(255, 224, 138, 0.3);
+}
+
+.notification.is-success {
+  background: linear-gradient(135deg, rgba(72, 199, 142, 0.2) 0%, rgba(6, 214, 160, 0.2) 100%);
+  border: 1px solid rgba(72, 199, 142, 0.3);
+}
+
+/* 统计框的独特设计 */
+.stats-box {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.1) 100%);
+  backdrop-filter: blur(20px);
+  border-radius: 25px;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+/* 客户备注的创新设计 */
+.customer-notes {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  border: none;
+  border-left: 4px solid #667eea;
+  border-radius: 15px;
+  padding: 1rem;
+  backdrop-filter: blur(10px);
+}
+
+/* 下拉菜单的独特设计 */
+.dropdown-menu {
+  border-radius: 15px;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  backdrop-filter: blur(20px);
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.dropdown-item {
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  margin: 5px;
+}
+
+.dropdown-item:hover {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  transform: translateX(5px);
+}
+
+/* 响应式改进 */
+@media (max-width: 768px) {
+  body::before {
+    animation-duration: 30s;
+  }
+  
+  .customer-card {
+    margin: 1rem 0.5rem;
+  }
+  
+  .section {
+    margin: 1rem;
+    border-radius: 20px;
+  }
+  
+  .navigation-bar {
+    border-radius: 20px;
+    padding: 1rem;
+  }
+}
+
+/* 加载动画 */
+.loading-shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.1) 25%,
+    rgba(255, 255, 255, 0.3) 50%,
+    rgba(255, 255, 255, 0.1) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+/* 特殊效果：鼠标跟随光晕 */
+.customer-card::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(102, 126, 234, 0.3), transparent);
+  border-radius: 50%;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.customer-card:hover::after {
+  opacity: 1;
+  animation: glowMove 2s ease-in-out infinite;
+}
+
+@keyframes glowMove {
+  0%, 100% { transform: translate(-50px, -50px); }
+  50% { transform: translate(50px, 50px); }
+}
