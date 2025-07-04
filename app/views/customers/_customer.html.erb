@@ -1,0 +1,105 @@
+<div class="card mb-4">
+  <div class="card-content">
+    <div class="media">
+      <div class="media-left">
+        <figure class="image is-64x64">
+          <% if customer.image.attached? %>
+            <%= image_tag customer.image, class: "is-rounded", alt: "#{customer.full_name} profile picture" %>
+          <% else %>
+            <div class="has-background-grey-lighter is-flex is-align-items-center is-justify-content-center" style="width: 64px; height: 64px; border-radius: 50%;">
+              <i class="fas fa-user has-text-grey" style="font-size: 24px;"></i>
+            </div>
+          <% end %>
+        </figure>
+      </div>
+      <div class="media-content">
+        <p class="title is-4 mb-2"><%= customer.full_name %></p>
+        <div class="content">
+          <div class="field is-grouped is-grouped-multiline">
+            <div class="control">
+              <div class="tags has-addons">
+                <span class="tag is-light">
+                  <i class="fas fa-phone mr-2"></i>
+                  Phone
+                </span>
+                <span class="tag is-info">
+                  <%= customer.phone_number %>
+                </span>
+              </div>
+            </div>
+            
+            <% if customer.email_address.present? %>
+              <div class="control">
+                <div class="tags has-addons">
+                  <span class="tag is-light">
+                    <i class="fas fa-envelope mr-2"></i>
+                    Email
+                  </span>
+                  <span class="tag is-success">
+                    <%= customer.email_address %>
+                  </span>
+                </div>
+              </div>
+            <% else %>
+              <div class="control">
+                <div class="tags has-addons">
+                  <span class="tag is-light">
+                    <i class="fas fa-envelope mr-2"></i>
+                    Email
+                  </span>
+                  <span class="tag is-warning">
+                    Not provided
+                  </span>
+                </div>
+              </div>
+            <% end %>
+          </div>
+          
+          <% if customer.notes.present? %>
+            <div class="notification is-light mt-3">
+              <p class="subtitle is-6 mb-2">
+                <i class="fas fa-sticky-note mr-2"></i>
+                Notes
+              </p>
+              <p><%= simple_format(truncate(customer.notes, length: 150)) %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+      
+      <div class="media-right">
+        <div class="dropdown is-hoverable is-right">
+          <div class="dropdown-trigger">
+            <button class="button is-small" aria-haspopup="true" aria-controls="dropdown-menu">
+              <span class="icon">
+                <i class="fas fa-ellipsis-v"></i>
+              </span>
+            </button>
+          </div>
+          <div class="dropdown-menu" id="dropdown-menu" role="menu">
+            <div class="dropdown-content">
+              <% if defined?(customer_path) %>
+                <%= link_to customer, class: "dropdown-item" do %>
+                  <i class="fas fa-eye mr-2"></i>View Details
+                <% end %>
+              <% end %>
+              <% if defined?(edit_customer_path) %>
+                <%= link_to edit_customer_path(customer), class: "dropdown-item" do %>
+                  <i class="fas fa-edit mr-2"></i>Edit Customer
+                <% end %>
+              <% end %>
+              <% if defined?(customer_path) %>
+                <hr class="dropdown-divider">
+                <%= link_to customer, method: :delete, 
+                            data: { confirm: "Are you sure you want to delete #{customer.full_name}?" }, 
+                            class: "dropdown-item has-text-danger" do %>
+                  <i class="fas fa-trash mr-2"></i>Delete
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

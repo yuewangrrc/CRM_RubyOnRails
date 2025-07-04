@@ -1,0 +1,63 @@
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column">
+        <h1 class="title is-2">
+          <i class="fas fa-users mr-3"></i>
+          Customer Directory
+        </h1>
+        <p class="subtitle">
+          Manage your customer relationships
+        </p>
+      </div>
+    </div>
+    
+    <div class="columns">
+      <div class="column is-8">
+        <% if @customers.any? %>
+          <div class="notification is-info is-light mb-4">
+            <p>
+              <i class="fas fa-info-circle mr-2"></i>
+              Found <strong><%= pluralize(@customers.count, 'customer') %></strong>
+            </p>
+          </div>
+          
+          <% @customers.each do |customer| %>
+            <%= render 'customer', customer: customer %>
+          <% end %>
+        <% else %>
+          <div class="notification is-warning">
+            <p class="title is-5">No customers found</p>
+            <p>Get started by adding your first customer!</p>
+          </div>
+        <% end %>
+      </div>
+      
+      <div class="column is-4">
+        <div class="box">
+          <h2 class="title is-4">
+            <i class="fas fa-chart-bar mr-2"></i>
+            Statistics
+          </h2>
+          <div class="content">
+            <p>
+              <span class="tag is-primary is-medium">
+                <%= @customers.count %> Total Customers
+              </span>
+            </p>
+            <p>
+              <span class="tag is-success is-medium">
+                <%= @customers.where.not(email_address: [nil, '']).count %> With Email
+              </span>
+            </p>
+            <p>
+              <span class="tag is-warning is-medium">
+                <%= @customers.where(email_address: [nil, '']).count %> Missing Email
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
